@@ -15,7 +15,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # or specific origins: ["https://yoursite.com"]
+    allow_origins=["https://resume.abid.ink"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
