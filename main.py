@@ -10,7 +10,11 @@ from groq import Groq, RateLimitError
 
 load_dotenv()
 
-app = FastAPI()
+app = FastAPI(
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None,
+)
 
 
 app.add_middleware(
