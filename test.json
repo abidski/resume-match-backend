@@ -1,0 +1,32 @@
+{
+  "score": 60,
+  "verdict": "Partial Match Found",
+  "summary": "The candidate has some relevant skills and experience, but lacks specific knowledge of Wi-Fi protocols and C programming language. The candidate's education and experience level are suitable for the role, but may require additional training or development. Overall, the candidate shows potential but may not be the best fit for the position.",
+  "dimensions": [
+    { "name": "Skills Match", "score": 70 },
+    { "name": "Experience Level", "score": 50 },
+    { "name": "Keywords", "score": 60 },
+    { "name": "Education", "score": 80 },
+    { "name": "Culture Fit", "score": 40 }
+  ],
+  "matching": [
+    "Computer Science education",
+    "Programming skills in languages such as Java, Python, and C#",
+    "Experience with software development and collaboration"
+  ],
+  "partial": [
+    "Transferable skills in problem-solving and communication",
+    "Familiarity with Linux and networking concepts"
+  ],
+  "missing": [
+    "C programming language proficiency",
+    "Wi-Fi protocols knowledge",
+    "Direct experience with wireless driver development"
+  ],
+  "suggestions": [
+    "Take online courses to learn C programming language and Wi-Fi protocols",
+    "Highlight transferable skills and experiences in the resume and cover letter",
+    "Prepare to discuss problem-solving and communication skills in an interview",
+    "Consider gaining experience in wireless driver development through personal projects or internships"
+  ]
+}

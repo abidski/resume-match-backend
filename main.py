@@ -45,7 +45,7 @@ async def analyze(
     posting = job_description
 
     result = send_prompt(resume, posting)
-    print(result)
+    return result
 
 
 # From Claude.ai
