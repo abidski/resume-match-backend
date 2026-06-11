@@ -4,29 +4,40 @@ import tempfile
 
 import pdfplumber
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile, status
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 from groq import Groq, RateLimitError
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
+from slowapi.util import get_remote_address
 
 load_dotenv()
+
+limiter = Limiter(key_func=get_remote_address)
 
 app = FastAPI(
     docs_url=None,
     redoc_url=None,
     openapi_url=None,
 )
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+app.add_middleware(SlowAPIMiddleware)
 
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://resume.abid.ink"],
+    allow_origins=["https://resume.abid.ink", "http://localhost:5173"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 
 @app.post("/analyze")
+@limiter.limit("2/minute;20/day")
 async def analyze(
+    request: Request,
     job_description: str = Form(...),
     resume_text: str = Form(""),
     resume_file: UploadFile = File(None),
